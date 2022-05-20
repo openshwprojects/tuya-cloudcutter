@@ -74,3 +74,22 @@ unmanaged-devices=interface-name:usb*
 10. Clone tuya-cloudcutter repo `git clone https://github.com/tuya-cloudcutter/tuya-cloudcutter`
 11. (Optional as independent step) In the cloudcutter directory, build the docker image `sudo docker build --network=host -t cloudcutter .`
 12. Run cloudcutter with `sudo ./run_detach.sh -r ...` (refer to [usage instructions](./INSTRUCTIONS.md))
+
+## Ubuntu-20.04.4 AMD64 on VMware virtual machine 
+
+Steps:
+
+1. Prepare Ubuntu 20.04.4 LTS VMware virtual machine 
+2. Checkout tuya-cloudcutter repository into your vm by your preferred method (git command or by http)
+3. Install docker
+	- Get curl (apt install curl), needed to install docker
+	- Then use get.docker.com script (download it with curl and run, see docker page for details)
+4. Plug your external WiFi Dongle supporting AP mode to the computer
+	- Make sure that is connected to Virtual Machine and not to the host
+	- Tested with TL-WN722N
+5. Run tuya-cloudcutter
+	- ./run_detach if you want to just cut from cloud
+	- ./run_flash if you want to change the firmware (eg. flash OpenBK7231T)
+	- remember to do operations in sudo mode and set chmod permissions for scripts
+That's all! No Network manager issues here. 
+
